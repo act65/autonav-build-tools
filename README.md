@@ -1,21 +1,20 @@
-Install notes
+## Install / run
 
-```git clone https://github.com/UoA-RL/turtlebot3_ddpg.git```
-should be
-```git clone https://github.com/SfTI-Robotics/Autonav-RL-Gym.git```
-??
+Run locally
 
-missing packages?
-```sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers```
+```
+cd local
+docker build --rm . -t autonav:v1
+./launch_docker.sh
 
+cd src/Autonav-RL-Gym
+./launch.sh train ppo
+```
 
-Also. The python dependencies...
-https://pytorch.org/
-pip install torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+## Refs
 
-
-
-
-https://github.com/facontidavide/ros-docker-gazebo/blob/master/launch_docker.sh
-https://ecs.wgtn.ac.nz/Support/TechnicalNotes
-https://github.com/SfTI-Robotics/Autonav-RL-Gym
+- https://ecs.wgtn.ac.nz/Support/TechnicalNotes
+- https://github.com/SfTI-Robotics/Autonav-RL-Gym
+- http://wiki.ros.org/docker/Tutorials/Docker
+- http://wiki.ros.org/docker/Tutorials/Hardware%20Acceleration
+- http://wiki.ros.org/docker/Tutorials/GUI
