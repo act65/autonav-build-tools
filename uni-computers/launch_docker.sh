@@ -9,6 +9,6 @@ docker run -it \
         --volume=$XAUTH:$XAUTH:rw \
         --env="XAUTHORITY=${XAUTH}" \
         --env="DISPLAY" \
-        -user="telfaralex" \
-        autonav:v4-isolated
+        --user="act65" \
+        autonav:headless-uni
         # autonav:nvidia-v2

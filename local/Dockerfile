@@ -30,7 +30,7 @@ RUN git clone https://github.com/act65/Autonav-RL-Gym.git
 WORKDIR $ROS_WS
 RUN source /opt/ros/kinetic/setup.bash && catkin_make
 
-RUN apt-get install gnome-terminal
+RUN apt-get install -y gnome-terminal
 
 # ### nvidia
 # LABEL com.nvidia.volumes.needed="nvidia_driver"
@@ -40,6 +40,6 @@ RUN apt-get install gnome-terminal
 ### install the python dependencies
 RUN apt-get install -y python-pip
 RUN pip install --upgrade pip
-RUN pip install -y torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-# RUN pip install -y torch torchvision  # cuda 10.1
-RUN pip install -yfuture
+RUN pip install torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+# RUN pip install torch torchvision  # cuda 10.1
+RUN pip install future

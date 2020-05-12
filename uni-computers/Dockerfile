@@ -1,7 +1,7 @@
-FROM autonav:v4
+FROM autonav:headless
 
 #Add new sudo user
-ENV USERNAME telfaralex
+ENV USERNAME act65
 RUN useradd -m $USERNAME && \
         echo "$USERNAME:$USERNAME" | chpasswd && \
         usermod --shell /bin/bash $USERNAME && \
