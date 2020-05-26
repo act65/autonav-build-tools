@@ -1,10 +1,6 @@
-FROM ros:kinetic-ros-base
+FROM ubuntu:xenial
 
 COPY ./keyboard /etc/default/keyboard
 
-RUN sudo apt-get update
-RUN sudo apt-get install -y firefox xorg openbox
-
-RUN groupadd -r firefoxtest && useradd -r -g firefoxtest -G audio,video firefoxtest
-
-USER firefoxtest
+RUN apt-get update
+RUN apt-get install -y firefox
