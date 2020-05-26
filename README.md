@@ -4,7 +4,7 @@ Run locally
 
 ```
 cd local
-docker build --rm . -t autonav:v1
+docker build --rm . -t autonav:local
 ./launch_docker.sh
 
 cd src/Autonav-RL-Gym

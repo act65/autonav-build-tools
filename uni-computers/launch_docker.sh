@@ -5,10 +5,9 @@ touch $XAUTH
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 docker run -it \
+        -e DISPLAY=$DISPLAY \
         --volume=$XSOCK:$XSOCK:rw \
         --volume=$XAUTH:$XAUTH:rw \
         --env="XAUTHORITY=${XAUTH}" \
-        --env="DISPLAY" \
-        --user="act65" \
-        autonav:headless-uni
-        # autonav:nvidia-v2
+        --user="telfaralex" \
+        autonav:remote

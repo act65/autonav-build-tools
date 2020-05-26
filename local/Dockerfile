@@ -32,14 +32,8 @@ RUN source /opt/ros/kinetic/setup.bash && catkin_make
 
 RUN apt-get install -y gnome-terminal
 
-# ### nvidia
-# LABEL com.nvidia.volumes.needed="nvidia_driver"
-# ENV PATH /usr/local/nvidia/bin:${PATH}
-# ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
-
 ### install the python dependencies
 RUN apt-get install -y python-pip
 RUN pip install --upgrade pip
 RUN pip install torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-# RUN pip install torch torchvision  # cuda 10.1
 RUN pip install future
