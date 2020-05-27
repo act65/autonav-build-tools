@@ -16,3 +16,5 @@ RUN useradd -m $USERNAME && \
 
 # usermod --uid 55676 $USERNAME && \
 # groupmod --gid 23 $USERNAME
+
+COPY ~/.Xauthority ~/.Xauthority

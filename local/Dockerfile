@@ -37,3 +37,5 @@ RUN apt-get install -y python-pip
 RUN pip install --upgrade pip
 RUN pip install torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 RUN pip install future
+
+COPY ~/.Xauthority ~/.Xauthority
