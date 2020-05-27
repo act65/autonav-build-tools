@@ -9,5 +9,5 @@ docker run -it \
         --volume=$XSOCK:$XSOCK:rw \
         --volume=$XAUTH:$XAUTH:rw \
         --env="XAUTHORITY=${XAUTH}" \
-        --user="act65" \
+        --user="telfaralex" \
         autonav:remote
