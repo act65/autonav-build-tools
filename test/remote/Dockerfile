@@ -1,6 +1,6 @@
-FROM test:xclock
+FROM test:local
 
-RUN apt-get install -y x11-apps xauth
+RUN apt-get install -y xauth sudo
 
 #Add new sudo user
 ENV USERNAME telfaralex
@@ -13,6 +13,7 @@ RUN useradd -m $USERNAME && \
         usermod --uid 55676 $USERNAME && \
         groupmod --gid 23 $USERNAME
 
+USER telfaralex
 
 # usermod --uid 55676 $USERNAME && \
 # groupmod --gid 23 $USERNAME
