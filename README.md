@@ -1,9 +1,12 @@
 ## Install / run
 
-To run locally
+To run locally.
+- Install docker.
+- Clone https://github.com/act65/Autonav-RL-Gym.git to your home directory.
+- Then run;
 
 ```
-cd local
+cd autonav-build-tools/local
 docker build --rm . -t autonav:local
 ./launch_docker.sh
 

@@ -25,7 +25,7 @@ RUN git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
 RUN git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 RUN git clone https://github.com/ros-simulation/gazebo_ros_pkgs.git
 
-RUN git clone https://github.com/act65/Autonav-RL-Gym.git
+# RUN git clone https://github.com/act65/Autonav-RL-Gym.git
 
 WORKDIR $ROS_WS
 RUN source /opt/ros/kinetic/setup.bash && catkin_make
