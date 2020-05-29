@@ -1,15 +1,18 @@
 ## Install / run
 
-Run locally
+To run locally
 
 ```
 cd local
 docker build --rm . -t autonav:local
 ./launch_docker.sh
 
-cd src/Autonav-RL-Gym
-./launch.sh train ppo
+(now inside the container)
+
+./launch.sh train ppo headless 0 /tmp/test
 ```
+
+Args for `./launch.sh` are "{train|test} {ppo|hrl|ddpg|ok} {headless|\*} {savedir} {loaddir}"
 
 ## Refs
 
