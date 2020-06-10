@@ -1,6 +1,6 @@
 # Prepare target env
 CONTAINER_DISPLAY="0"
-CONTAINER_HOSTNAME="xterm"
+CONTAINER_HOSTNAME="telfaralex"
 
 # Create a directory for the socket
 mkdir -p display/socket
