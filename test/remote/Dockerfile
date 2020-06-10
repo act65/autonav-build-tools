@@ -1,5 +1,6 @@
 FROM ubuntu
 
+<<<<<<< HEAD
 RUN apt-get update && apt-get install -y xauth sudo x11-apps
 ENV USERNAME telfaralex
 
@@ -16,3 +17,9 @@ RUN useradd -ms /bin/bash $USERNAME
 
 USER $USERNAME
 WORKDIR /home/$USERNAME
+=======
+RUN apt-get update && apt-get install -y x11-apps
+RUN useradd -ms /bin/bash xclocktest
+USER xclocktest
+WORKDIR /home/xclocktest
+>>>>>>> be746b873847b381e65f23a82abc41aec1588552
