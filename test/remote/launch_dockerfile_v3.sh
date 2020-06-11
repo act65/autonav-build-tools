@@ -21,10 +21,6 @@ DISPLAY_NUMBER=$(echo $DISPLAY | cut -d. -f1 | cut -d: -f2)
 socat TCP4:localhost:60${DISPLAY_NUMBER} UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_DISPLAY} &
 # socat TCP-LISTEN:60${DISPLAY_NUMBER},reuseaddr,fork UNIX-CLIENT:/tmp/display/socket/X${CONTAINER_DISPLAY}
 
-# socat UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_DISPLAY} TCP4:localhost:60${DISPLAY_NUMBER} &
-socat TCP4:localhost:60${DISPLAY_NUMBER} UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_DISPLAY} &
-# socat TCP-LISTEN:60${DISPLAY_NUMBER},reuseaddr,fork UNIX-CLIENT:/tmp/display/socket/X${CONTAINER_DISPLAY}
-
 # Launch the container
 docker run -it --rm \
   -e DISPLAY=:${CONTAINER_DISPLAY} \
