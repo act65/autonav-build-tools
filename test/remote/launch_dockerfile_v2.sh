@@ -9,9 +9,11 @@ chmod -R 777 /tmp/display/
 
 # Get the DISPLAY slot
 DISPLAY_NUMBER=$(echo $DISPLAY | cut -d. -f1 | cut -d: -f2)
+echo DISPLAY_NUMBER $DISPLAY_NUMBER
 
 # Extract current authentication cookie
 AUTH_COOKIE=$(xauth list | grep "^$(hostname)/unix:${DISPLAY_NUMBER} " | awk '{print $3}')
+echo AUTH_COOKIE $AUTH_COOKIE
 
 # Create the new X Authority file
 xauth -f /tmp/display/Xauthority add ${CONTAINER_HOSTNAME}/unix:${CONTAINER_DISPLAY} MIT-MAGIC-COOKIE-1 ${AUTH_COOKIE}
