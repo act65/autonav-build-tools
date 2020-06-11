@@ -18,8 +18,12 @@ DISPLAY_NUMBER=$(echo $DISPLAY | cut -d. -f1 | cut -d: -f2)
 
 # Proxy with the :0 DISPLAY
 # socat UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_DISPLAY} TCP4:localhost:60${DISPLAY_NUMBER} &
-socat TCP4:localhost:60${DISPLAY_NUMBER} UNIX-LISTEN:/tmp/display/socket/X${DISPLAY_NUMBER} &
-# socat TCP4-LISTEN:60${DISPLAY_NUMBER},reuseaddr,fork UNIX-CLIENT:/tmp/display/socket/X${CONTAINER_NUMBER}
+socat TCP4:localhost:60${DISPLAY_NUMBER} UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_DISPLAY} &
+# socat TCP-LISTEN:60${DISPLAY_NUMBER},reuseaddr,fork UNIX-CLIENT:/tmp/display/socket/X${CONTAINER_DISPLAY}
+
+# socat UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_DISPLAY} TCP4:localhost:60${DISPLAY_NUMBER} &
+socat TCP4:localhost:60${DISPLAY_NUMBER} UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_DISPLAY} &
+# socat TCP-LISTEN:60${DISPLAY_NUMBER},reuseaddr,fork UNIX-CLIENT:/tmp/display/socket/X${CONTAINER_DISPLAY}
 
 # Launch the container
 docker run -it --rm \
@@ -29,4 +33,3 @@ docker run -it --rm \
   --hostname ${CONTAINER_HOSTNAME} \
   test:remote \
   xclock
-

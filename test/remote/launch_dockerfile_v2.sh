@@ -1,6 +1,6 @@
 # Prepare target env
 CONTAINER_DISPLAY="0"
-CONTAINER_HOSTNAME="telfaralex"
+CONTAINER_HOSTNAME="test"
 
 # Create a directory for the socket
 mkdir -p /tmp/display/socket
@@ -17,8 +17,8 @@ AUTH_COOKIE=$(xauth list | grep "^$(hostname)/unix:${DISPLAY_NUMBER} " | awk '{p
 xauth -f /tmp/display/Xauthority add ${CONTAINER_HOSTNAME}/unix:${CONTAINER_DISPLAY} MIT-MAGIC-COOKIE-1 ${AUTH_COOKIE}
 
 # Proxy with the :0 DISPLAY
-socat TCP4:localhost:60${DISPLAY_NUMBER} UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_DISPLAY} &
 # socat UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_NUMBER} TCP4:localhost:60${DISPLAY_NUMBER} &
+socat TCP4:localhost:60${DISPLAY_NUMBER} UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_DISPLAY} &
 # socat TCP-LISTEN:60${DISPLAY_NUMBER},reuseaddr,fork UNIX-CLIENT:/tmp/display/socket/X${CONTAINER_NUMBER}
 
 
