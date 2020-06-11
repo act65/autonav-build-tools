@@ -1,4 +1,9 @@
-FROM ubuntu:xenial
+FROM ubuntu
 
-RUN apt-get update
-RUN apt-get install -y x11-apps
+RUN apt-get update && apt-get install -y xauth sudo x11-apps
+ENV USERNAME telfaralex
+
+RUN useradd -ms /bin/bash $USERNAME
+
+USER $USERNAME
+WORKDIR /home/$USERNAME
