@@ -15,10 +15,11 @@ echo $DISPLAY_NUMBER
 AUTH_COOKIE=$(xauth list | grep "^$(hostname)/unix:${DISPLAY_NUMBER} " | awk '{print $3}')
 
 # Create the new X Authority file
-xauth -f display/Xauthority add ${CONTAINER_HOSTNAME}/unix:${CONTAINER_DISPLAY} MIT-MAGIC-COOKIE-1 ${AUTH_COOKIE}
+xauth -f /tmp/display/Xauthority add ${CONTAINER_HOSTNAME}/unix:${CONTAINER_DISPLAY} MIT-MAGIC-COOKIE-1 ${AUTH_COOKIE}
 
 # Proxy with the :0 DISPLAY
-socat UNIX-LISTEN:display/socket/X${CONTAINER_DISPLAY} TCP4$:localhost:60{DISPLAY_NUMBER} &
+socat TCP4:localhost:60${DISPLAY_NUMBER} UNIX-LISTEN:/tmp/display/socket/X${CONTAINER_DISPLAY} &
+# socat TCP-LISTEN:60${DISPLAY_NUMBER},reuseaddr,fork UNIX-CLIENT:/tmp/display/socket
 
 # Launch the container
 docker run -it --rm \
@@ -26,4 +27,5 @@ docker run -it --rm \
   -v /tmp/display/socket:/tmp/.X11-unix \
   -v /tmp/display/Xauthority:/home/telfaralex/.Xauthority \
   --hostname ${CONTAINER_HOSTNAME} \
-  test:remote
+  test:remote \
+  xclock
